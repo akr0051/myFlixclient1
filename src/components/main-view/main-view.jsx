@@ -1,25 +1,23 @@
 import React from 'react';
 import axios from 'axios';
-
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 
 export class MainView extends React.Component {
-
   constructor() {
-    super();
+    super(); // This calls the superclass constructor so React can initialize it
 
     this.state = {
       movies: null,
       selectedMovie: null
-    };
+    }; // Initializes the state to an empty object so we can destructure it later
   }
 
+  // One of the "hooks" available in a React component
   componentDidMount() {
     axios.get('https://myflixapp0051.herokuapp.com/movies')
       .then(response => {
-        // Assign the result to the state
-        this.setState({
+        this.setState({ //Assign the result to the state
           movies: response.data
         });
       })
@@ -34,17 +32,15 @@ export class MainView extends React.Component {
     });
   }
 
-
   render() {
-    const { movies, selectedMovie } = this.state;
+    const { movies, selectedMovie } = this.state; //If the state isn't initialized, this will throw on runtime before the data is initially loaded
 
-    // Before the movies have been loaded
-    if (!movies) return <div className="main-view" />;
+    if (!movies) return <div className="main-view" />; //Before the movies have been loaded
 
     return (
       <div className="main-view">
         {selectedMovie
-          ? <MovieView movie={selectedMovie} />
+          ? <MovieView movie={selectedMovie} onClick={movie => this.onMovieClick(movie)} />
           : movies.map(movie => (
             <MovieCard key={movie._id} movie={movie} onClick={movie => this.onMovieClick(movie)} />
           ))
