@@ -23,8 +23,7 @@ export class MainView extends React.Component {
     super();
 
     this.state = {
-      movies: null,
-      selectedMovie: null,
+      movies: [],
       user: null
     };
   }
@@ -85,8 +84,6 @@ export class MainView extends React.Component {
     const { movies, user } = this.state;
 
 
-    if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
-    if (!movies) return <div className="main-view" />;
 
     return (
       <Router>
