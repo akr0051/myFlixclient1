@@ -1,1 +1,10 @@
+
+"node_modules"
 node_modules
+
+".cache"
+.cache
+
+"dist"
+dist
+>>>>>>> 1bbf3c04d9d31087c5e608a8f4bf1e9c20bd412f
