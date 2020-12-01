@@ -37925,6 +37925,10 @@ var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
 
 require("./registration-view.scss");
 
+var _axios = _interopRequireDefault(require("axios"));
+
+var _reactRouterDom = require("react-router-dom");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
@@ -37946,22 +37950,22 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function RegistrationView(props) {
   var _useState = (0, _react.useState)(''),
       _useState2 = _slicedToArray(_useState, 2),
-      Username = _useState2[0],
+      username = _useState2[0],
       setUsername = _useState2[1];
 
   var _useState3 = (0, _react.useState)(''),
       _useState4 = _slicedToArray(_useState3, 2),
-      Password = _useState4[0],
+      password = _useState4[0],
       setPassword = _useState4[1];
 
   var _useState5 = (0, _react.useState)(''),
       _useState6 = _slicedToArray(_useState5, 2),
-      Email = _useState6[0],
+      email = _useState6[0],
       setEmail = _useState6[1];
 
   var _useState7 = (0, _react.useState)(''),
       _useState8 = _slicedToArray(_useState7, 2),
-      BirthDate = _useState8[0],
+      birthDate = _useState8[0],
       setBirthDate = _useState8[1]; // Allows login with random credentials for existing user, no functionality for new users yet
 
 
@@ -37972,11 +37976,11 @@ function RegistrationView(props) {
     props.onLoggedIn(Username);
   };
 
-  axios.post('https://myflixapp0051.herokuapp.com/users', {
+  _axios.default.post('https://myflixapp0051.herokuapp.com/users', {
     Username: username,
     Password: password,
     Email: email,
-    Birthday: birthday
+    Birthday: birthDate
   }).then(function (response) {
     var data = response.data;
     console.log(data);
@@ -37984,6 +37988,7 @@ function RegistrationView(props) {
   }).catch(function (e) {
     console.log('error registering the user');
   });
+
   return _react.default.createElement("div", {
     className: "registration-view"
   }, _react.default.createElement("h3", null, "Register as a New MyFlix User"), _react.default.createElement(_Form.default, {
@@ -37993,9 +37998,9 @@ function RegistrationView(props) {
     className: "registration-item"
   }, _react.default.createElement(_Form.default.Label, null, "Create Username: "), _react.default.createElement(_Form.default.Control, {
     type: "text",
-    value: Username,
+    value: username,
     onChange: function onChange(e) {
-      return setUsername(e.target.value);
+      return setusername(e.target.value);
     },
     placeholder: "Username"
   }), _react.default.createElement(_Form.default.Text, {
@@ -38005,9 +38010,9 @@ function RegistrationView(props) {
     className: "registration-item"
   }, _react.default.createElement(_Form.default.Label, null, "Create Password: "), _react.default.createElement(_Form.default.Control, {
     type: "password",
-    value: Password,
+    value: password,
     onChange: function onChange(e) {
-      return setPassword(e.target.value);
+      return setpassword(e.target.value);
     },
     placeholder: "Password"
   }), _react.default.createElement(_Form.default.Text, {
@@ -38018,7 +38023,7 @@ function RegistrationView(props) {
   }, _react.default.createElement(_Form.default.Label, null, "Enter Email Address: "), _react.default.createElement(_Form.default.Control, {
     type: "email",
     placeholder: "Email Address",
-    value: Email,
+    value: email,
     onChange: function onChange(e) {
       return setEmail(e.target.value);
     }
@@ -38028,7 +38033,7 @@ function RegistrationView(props) {
   }, _react.default.createElement(_Form.default.Label, null, "Enter Date of Birth: "), _react.default.createElement(_Form.default.Control, {
     type: "date",
     placeholder: "YYYY-MM-DD",
-    value: BirthDate,
+    value: birthDate,
     onChange: function onChange(e) {
       return setBirthDate(e.target.value);
     }
@@ -38053,7 +38058,7 @@ RegistrationView.propTypes = {
     Birthdate: _propTypes.default.instanceOf(Date).isRequired
   })
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./registration-view.scss":"components/registration-view/registration-view.scss"}],"../node_modules/react-bootstrap/esm/Container.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./registration-view.scss":"components/registration-view/registration-view.scss","axios":"../node_modules/axios/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js"}],"../node_modules/react-bootstrap/esm/Container.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38464,7 +38469,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50708" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58581" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
